@@ -1,0 +1,589 @@
+[
+    
+    {
+        "id": 8817715,
+        "description": "Pile trekking donna MH100 lampone",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "fleece",
+        "warmth": "medium",
+        "waterproof": 0,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/pile-trekking-donna-mh100-azzurro/_/R-p-312282?mc=8817715&c=rosso"
+    },
+
+    {
+        "id": 8550837,
+        "description": "Pile montagna donna MH120 blu inchiostro",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "fleece",
+        "warmth": "medium",
+        "waterproof": 0,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pile-montagna-donna-mh120/_/R-p-302556?mc=8550837&c=blu_verde" 
+    },
+
+    {
+        "id": 8649068,
+        "description": "Pile trekking donna MH520 HOOD nero",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "fleece",
+        "warmth": "high",
+        "waterproof": 0,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/pile-montagna-donna-mh520-hood/_/R-p-331161?mc=8649068" 
+    },
+
+    
+
+
+
+    {
+        "id": 8772946,
+        "description": "Pile montagna uomo MH100 grigio",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "fleece",
+        "warmth": "medium",
+        "waterproof": 0,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/pile-montagna-uomo-mh100/_/R-p-312360?mc=8772946&c=grigio"
+    },
+
+    {
+        "id": 8647631,
+        "description": "Pile montagna uomo MH120 blu",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "fleece",
+        "warmth": "medium",
+        "waterproof": 0,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pile-montagna-donna-mh120/_/R-p-302556?mc=8550837&c=blu_verde" 
+    },
+
+    {
+        "id": 8649142,
+        "description": "Pile montagna uomo MH520 Hood grigio",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "fleece",
+        "warmth": "high",
+        "waterproof": 0,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/pile-montagna-uomo-mh520-hood/_/R-p-332308?mc=8649142" 
+    },
+
+    
+
+
+
+    {
+        "id": 8612421,
+        "description": "T-shirt trekking donna MH100 grigio-azzurro",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "t-shirt",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/t-shirt-montagna-donna-mh100/_/R-p-172246?mc=8612422" 
+    },
+
+
+    {
+        "id": 8612429,
+        "description": "T-shirt trekking donna MH500 verde",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "t-shirt",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/t-shirt-montagna-donna-mh500/_/R-p-307315?mc=8612429" 
+    },
+
+    {
+        "id": 8787789,
+        "description": "T-shirt lana merinos trekking donna MT500 WOOL viola",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "t-shirt",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/t-shirt-lana-merinos-trekking-donna-mt500-wool/_/R-p-327360?mc=8787789" 
+    },
+
+    
+
+
+
+    {
+        "id": 8316244,
+        "description": "T-shirt montagna uomo MH100 grigia",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "t-shirt",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/t-shirt-montagna-uomo-mh100-grigia/_/R-p-106632?mc=8316244" 
+    },
+
+    {
+        "id": 8587280,
+        "description": "T-shirt trekking uomo MH500 Blu",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "t-shirt",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/t-shirt-trekking-uomo-mh500-grigia/_/R-p-325489?mc=8587280" 
+    },
+
+    {
+        "id": 8755226,
+        "description": "T-shirt lana merinos trekking uomo MT500 WOOL blu",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "t-shirt",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/t-shirt-lana-merinos-trekking-uomo-mt500-wool/_/R-p-331113?mc=8755226" 
+    },
+
+    
+
+
+
+    {
+        "id": 8549506,
+        "description": "Giacca montagna donna RAINCUT 1/2 ZIP impermeabile blu",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "low",
+        "waterproof": 5000,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/giacca-montagna-donna-raincut-1-2-zip-impermeabile/_/R-p-134605?mc=8549506" 
+    },
+
+    {
+        "id": 8493469,
+        "description": "Giacca montagna donna MH100 impermeabile nero",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "low",
+        "waterproof": 5000,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/giacca-montagna-donna-mh100/_/R-p-172374?mc=8595738" 
+    },
+
+    {
+        "id": 8589860,
+        "description": "Giacca trekking donna MH500 verde",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "high",
+        "waterproof": 25000,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/giacca-montagna-impermeabile-donna-mh500/_/R-p-307383?mc=8789598" 
+    },
+    
+    {
+        "id": 8640301,
+        "description": "Giacca trekking donna SH500 impermeabile bordeaux | -10°C",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "high",
+        "waterproof": 5000,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/giacca-trekking-donna-sh500-impermeabile-ocra-10-c/_/R-p-331299?mc=8640301" 
+    },
+
+
+    {
+        "id": 8540395,
+        "description": "Giacca trekking donna TRAVEL 500 3in1 nera | -8°C",
+        "gender": "W",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "high",
+        "waterproof": 10000,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/giacca-trekking-donna-travel-500-3in1-8-c/_/R-p-144585?mc=8540395" 
+    },
+
+    
+
+
+
+    {
+        "id": 8300326,
+        "description": "Giacca trekking uomo RAINCUT 1/2 ZIP nera",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "low",
+        "waterproof": 10000,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/giacca-trekking-uomo-raincut-1-2-zip-nera/_/R-p-5332?mc=8300326" 
+    },
+
+    {
+        "id": 8585162,
+        "description": "Giacca montagna uomo MH150 impermeabile blu",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "low",
+        "waterproof": 15000,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/giacca-montagna-uomo-mh150-impermeabile/_/R-p-309604?mc=8585162" 
+    },
+
+    {
+        "id": 8785245,
+        "description": "Giacca montagna uomo MH500 impermeabile nero",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "low",
+        "waterproof": 25000,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/giacca-montagna-uomo-mh500/_/R-p-301681?mc=8785245" 
+    },
+
+    {
+        "id": 8641932,
+        "description": "Giacca trekking uomo SH500 impermeabile nera | -10°C",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "high",
+        "waterproof": 10000,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/giacca-trekking-uomo-sh100-x-warm-10-c/_/R-p-331992?mc=8641932" 
+    },
+
+    {
+        "id": 8540394,
+        "description": "Giacca viaggio uomo TRAVEL500 3in1 | -10°C | nera",
+        "gender": "M",
+        "body part": "upper body",
+        "category": "jacket",
+        "warmth": "high",
+        "waterproof": 10000,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/giacca-viaggio-uomo-travel-500-3in1-10-c-impermeabile/_/R-p-147553?mc=8540394" 
+    },
+
+    
+
+
+
+    {
+        "id": 8619679,
+        "description": "Short trekking donna MH100 blu",
+        "gender": "W",
+        "body part": "lower body",
+        "category": "shorts",
+        "warmth": "low",
+        "waterproof": 1,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/short-trekking-donna-mh100/_/R-p-331027?mc=8619679" 
+    },
+
+    {
+        "id": 8605940,
+        "description": "Short trekking donna MT500 verde oliva",
+        "gender": "W",
+        "body part": "lower body",
+        "category": "shorts",
+        "warmth": "low",
+        "waterproof": 1,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pantaloncini-trekking-donna-mt500/_/R-p-329242?mc=8605940" 
+    },
+
+    {
+        "id": 8588308,
+        "description": "Pantaloni trekking donna NH100 neri",
+        "gender": "W",
+        "body part": "lower body",
+        "category": "pants",
+        "warmth": "medium",
+        "waterproof": 1,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/pantaloni-trekking-donna-nh100/_/R-p-308204?mc=8588308" 
+    },
+
+    {
+        "id": 8608070,
+        "description": "Pantaloni trekking donna MT500 grafite",
+        "gender": "W",
+        "body part": "lower body",
+        "category": "pants",
+        "warmth": "medium",
+        "waterproof": 1,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pantaloni-trekking-donna-trek500/_/R-p-329217?mc=8787772" 
+    },
+
+    {
+        "id": 8540016,
+        "description": "Pantaloni trekking neve donna SH100 X-WARM",
+        "gender": "W",
+        "body part": "lower body",
+        "category": "pants",
+        "warmth": "high",
+        "waterproof": 2,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pantaloni-trekking-neve-donna-sh100-x-warm/_/R-p-174720?mc=8540016" 
+    },
+
+    
+
+
+
+    {
+        "id": 8785231,
+        "description": "Short trekking uomo MH100 blu",
+        "gender": "M",
+        "body part": "lower body",
+        "category": "shorts",
+        "warmth": "low",
+        "waterproof": 1,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/short-trekking-uomo-mh100/_/R-p-341568?mc=8785231" 
+    },
+
+    {
+        "id": 8605564,
+        "description": "Pantaloncini trekking uomo MT500 grigi",
+        "gender": "M",
+        "body part": "lower body",
+        "category": "shorts",
+        "warmth": "low",
+        "waterproof": 1,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pantaloncini-trekking-uomo-mt500-grigi/_/R-p-329049?mc=8605564" 
+    },
+
+    {
+        "id": 8771476,
+        "description": "Pantaloni trekking uomo NH100 grigio scuro",
+        "gender": "M",
+        "body part": "lower body",
+        "category": "pants",
+        "warmth": "medium",
+        "waterproof": 1,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/pantaloni-trekking-uomo-nh100/_/R-p-343391?mc=8771476" 
+    },
+
+    {
+        "id": 8789670,
+        "description": "Pantaloni MT500 montagna uomo grigi",
+        "gender": "M",
+        "body part": "lower body",
+        "category": "pants",
+        "warmth": "medium",
+        "waterproof": 1,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pantaloni-trekking-uomo-mt500/_/R-p-329107?mc=8789670" 
+    },
+
+    {
+        "id": 8558721,
+        "description": "Pantaloni trekking uomo SH100 grigi",
+        "gender": "M",
+        "body part": "lower body",
+        "category": "pants",
+        "warmth": "high",
+        "waterproof": 2,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/pantaloni-trekking-uomo-sh100/_/R-p-311858?mc=8558721" 
+    },
+
+
+
+
+
+
+
+
+
+    
+    {
+        "id": 8493371,
+        "description": "Scarpe trekking donna NH150 MID impermeabili grigie",
+        "gender": "W",
+        "body part": "footwear",
+        "category": "hiking boots",
+        "warmth": "low",
+        "waterproof": 1,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/scarpe-trekking-donna-nh150-mid-impermeabili/_/R-p-171852?mc=8493371" 
+    },
+
+    {
+        "id": 8397086,
+        "description": "Scarpe trekking donna MH100 MID impermeabili blu",
+        "gender": "W",
+        "body part": "footwear",
+        "category": "hiking boots",
+        "warmth": "low",
+        "waterproof": 2,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/scarpe-trekking-donna-mh100-mid-impermeabili/_/R-p-133726?mc=8397086" 
+    },
+
+    {
+        "id": 8384356,
+        "description": "Scarpe trekking donna TREK 100 impermeabili marroni",
+        "gender": "W",
+        "body part": "footwear",
+        "category": "hiking boots",
+        "warmth": "low",
+        "waterproof": 3,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/scarpe-trekking-donna-trek-100-impermeabili-marroni/_/R-p-4951?mc=8384356" 
+    },
+
+    
+
+
+
+    {
+        "id": 8554620,
+        "description": "Scarpe trekking uomo NH150 MID impermeabili nere",
+        "gender": "M",
+        "body part": "footwear",
+        "category": "hiking boots",
+        "warmth": "low",
+        "waterproof": 1,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/scarpe-trekking-uomo-nh150-mid-impermeabili/_/R-p-308079?mc=8554620" 
+    },
+
+    {
+        "id": 8553119,
+        "description": "Scarpe trekking uomo MH100 impermeabili nere",
+        "gender": "M",
+        "body part": "footwear",
+        "category": "hiking boots",
+        "warmth": "low",
+        "waterproof": 2,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/scarpe-trekking-uomo-mh100-impermeabili-verdi/_/R-p-307814?mc=8553119" 
+    },
+
+    {
+        "id": 8319097,
+        "description": "Scarpe trekking uomo TREK 100 impermeabili grigie",
+        "gender": "M",
+        "body part": "footwear",
+        "category": "hiking boots",
+        "warmth": "low",
+        "waterproof": 3,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/scarpe-trekking-uomo-trek-100-impermeabili-grigie/_/R-p-14011?mc=8319097" 
+    },
+
+    
+
+
+
+    
+    
+    {
+        "id": 8665857,
+        "description": "Calze trekking adulto HIKE 100 HIGH nere | 2 paia",
+        "gender": "N",
+        "body part": "footwear",
+        "category": "hiking socks",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/calze-trekking-adulto-hike-100-high-blu-petrolio-e-grigie-2-paia/_/R-p-334359?mc=8665857" 
+    },
+
+    {
+        "id": 8616561,
+        "description": "Calze trekking adulto HIKE 500 HIGH nere | 2 paia",
+        "gender": "N",
+        "body part": "footwear",
+        "category": "hiking socks",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/calze-trekking-adulto-hike-500-high-2-paia/_/R-p-330200?mc=8616561" 
+    },  
+    {
+        "id": 8616547,
+        "description": "Calze montagna adulto HIKE 900 High verde oliva | 2 paia",
+        "gender": "N",
+        "body part": "footwear",
+        "category": "hiking socks",
+        "warmth": "low",
+        "waterproof": 0,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/calze-montagna-adulto-hike-900-high-2-paia/_/R-p-330146?mc=8616547" 
+    },   
+
+
+
+
+    
+    
+    
+    
+    {
+        "id": 8789426,
+        "description": "Zaino trekking NH100 Arpenaz | 20L | giallo",
+        "gender": "N",
+        "body part": "backpack",
+        "category": "backpack",
+        "warmth": "N",
+        "waterproof": 0,
+        "level": "beginner",
+        "link": "https://www.decathlon.it/p/zaino-trekking-nh100-20-litri/_/R-p-301674?mc=8789426" 
+    },
+    
+    {
+        "id": 8649476,
+        "description": "Zaino trekking MH100 20L nero",
+        "gender": "N",
+        "body part": "backpack",
+        "category": "backpack",
+        "warmth": "N",
+        "waterproof": 0,
+        "level": "intermediate",
+        "link": "https://www.decathlon.it/p/zaino-trekking-mh100-20l/_/R-p-331022?mc=8649476" 
+    },  
+
+    {
+        "id": 962984,
+        "description": "Zaino trekking MH500 | 20 litri",
+        "gender": "N",
+        "body part": "backpack",
+        "category": "backpack",
+        "warmth": "N",
+        "waterproof": 0,
+        "level": "advanced",
+        "link": "https://www.decathlon.it/p/zaino-trekking-mh500-20-litri/_/R-p-310057?mc=962984" 
+    }
+
+]
+
+
+
