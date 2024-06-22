@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import requests
 import base64
-from consts import WEATHER_API_KEY
+from adapter_layer.consts import WEATHER_API_KEY
 
 # Create a blueprint
 get_weather_icon_blueprint = Blueprint('get_weather_icon', __name__)

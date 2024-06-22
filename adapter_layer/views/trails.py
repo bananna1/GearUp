@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import requests
 
-from consts import GMAPS_API_KEY
+from adapter_layer.consts import GMAPS_API_KEY
 
 # Create a blueprint
 get_trails_blueprint = Blueprint('get_trails', __name__)

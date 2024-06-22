@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 import requests
-from consts import WEATHER_API_KEY
+from adapter_layer.consts import WEATHER_API_KEY
 
 # Create a blueprint
 get_weather_forecasts_blueprint = Blueprint('get_weather_forecasts', __name__)

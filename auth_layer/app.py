@@ -5,22 +5,19 @@ from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from google.auth.transport.requests import Request
 import os
+import sys
 import pathlib
 
-# Import db_operations
-from data_layer.db_operations import add_user, get_user_by_email
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Configuration
-GOOGLE_CLIENT_ID = "391172949220-31patdeu9krmvf6v78fdrpgmgvg6hlta.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET = "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"
-SCOPES = ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email', 'openid']
-REDIRECT_URI = 'http://localhost:5000/auth/callback'
+from consts import *
 
 # Initialize Flask app
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# Path to the client_secret.json file downloaded from the Google API Console
+
+# Path to the client_secret.json
 CLIENT_SECRETS_FILE = os.path.join(pathlib.Path(__file__).parent, 'client_secret.json')
 
 flow = Flow.from_client_secrets_file(
@@ -29,11 +26,13 @@ flow = Flow.from_client_secrets_file(
     redirect_uri=REDIRECT_URI
 )
 
+
 @app.route('/auth/login')
 def login():
     authorization_url, state = flow.authorization_url()
     session['state'] = state
     return redirect(authorization_url)
+
 
 @app.route('/auth/callback')
 def callback():
@@ -77,4 +76,4 @@ def profile():
     return f'Hello, {session["email"]}!'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5005)

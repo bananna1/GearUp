@@ -1,12 +1,12 @@
 from flask import Flask
 
-from coordinates import get_coordinates_blueprint
-from elevation import get_elevation_blueprint
-from huts import get_huts_blueprint
-from trail_image import get_trail_image_blueprint
-from trails import get_trails_blueprint
-from weather_forecasts import get_weather_forecasts_blueprint
-from weather_icon import get_weather_icon_blueprint
+from adapter_layer.views.coordinates import get_coordinates_blueprint
+from adapter_layer.views.elevation import get_elevation_blueprint
+from adapter_layer.views.huts import get_huts_blueprint
+from adapter_layer.views.trail_image import get_trail_image_blueprint
+from adapter_layer.views.trails import get_trails_blueprint
+from adapter_layer.views.weather_forecasts import get_weather_forecasts_blueprint
+from adapter_layer.views.weather_icon import get_weather_icon_blueprint
 
 
 app = Flask(__name__)

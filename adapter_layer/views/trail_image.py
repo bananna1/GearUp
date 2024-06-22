@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 import requests
 import base64
-from consts import GMAPS_API_KEY
+from adapter_layer.consts import GMAPS_API_KEY
 
 # Create a blueprint
 get_trail_image_blueprint = Blueprint('get_trail_image', __name__)

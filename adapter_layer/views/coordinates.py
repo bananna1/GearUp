@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 import requests
-from consts import GMAPS_API_KEY
+from adapter_layer.consts import GMAPS_API_KEY
 
 # Create a blueprint
 get_coordinates_blueprint = Blueprint('get_coordinates', __name__)
