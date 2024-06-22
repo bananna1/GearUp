@@ -1,12 +1,14 @@
 # auth_layer/auth.py
 
 from flask import Flask, redirect, url_for, session, request
+import requests
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from google.auth.transport.requests import Request
 import os
 import sys
 import pathlib
+from consts import GET_USER_URL, ADD_USER_URL
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -53,15 +55,26 @@ def callback():
     except ValueError:
         return 'Invalid token'
 
-    session['google_id'] = id_info.get('sub')
-    session['email'] = id_info.get('email')
-    session['first_name'] = id_info.get('given_name')
-    session['last_name'] = id_info.get('family_name')
+    google_id = id_info.get('sub')
+    email = id_info.get('email')
+    first_name = id_info.get('given_name')
+    last_name = id_info.get('family_name')
+
+    session['google_id'] = google_id
+    session['email'] = email
+    session['first_name'] = first_name
+    session['last_name'] = last_name
 
     # Add user to the database if not already present
-    if not get_user_by_email(session['email']):
-        add_user(session['email'], session.get('first_name'), session.get('last_name'))
-
+    url = f'{GET_USER_URL}/{email}'
+    print(url)
+    user = requests.get(url)
+    if not user:
+        requests.post(ADD_USER_URL, json = {
+            'email': email,
+            'name': first_name,
+            'lastname': last_name
+        })
     return redirect(url_for('profile'))
 
 @app.route('/auth/logout')

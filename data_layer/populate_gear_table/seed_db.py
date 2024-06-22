@@ -1,4 +1,4 @@
-"""
+
 import json
 import sys 
 import os
@@ -9,7 +9,7 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..
 # Add the project root directory to sys.path
 sys.path.append(project_root)
 
-from data_layer import app
+from data_layer.app import app
 
 from data_layer.app import db
 from data_layer.app.models import Gear
@@ -21,7 +21,7 @@ def seed_db():
             gear_data = json.load(f)
             for item in gear_data:
                 print(item)
-                gear = Gear(
+                item = Gear(
                     code=item['id'],
                     description=item['description'],
                     gender=item['gender'],
@@ -31,15 +31,15 @@ def seed_db():
                     level=item['level'],
                     link=item['link']
                 )
-                db.session.add(gear)
-            db.session.commit()
+                db.session.add(item)
+                db.session.commit()
     print('Database seeded!')
 
 def display_gear_table():
-    gear_items = Gear.query.all()
-    for item in gear_items:
-        print(item)
+    with app.app_context():
+        gear_items = Gear.query.all()
+        for item in gear_items:
+            print(item)
 
-seed_db()
+#seed_db()
 display_gear_table()
-"""
