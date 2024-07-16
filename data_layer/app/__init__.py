@@ -21,6 +21,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 from data_layer.app.models import *
+
 from data_layer.app.views.get_gear import get_gear_blueprint
 from data_layer.app.views.add_favourite_gear import add_favourite_gear_blueprint
 from data_layer.app.views.get_favourite_gear import get_favourite_gear_blueprint
@@ -31,9 +32,9 @@ from data_layer.app.views.get_user import get_user_blueprint
 
 
 app.register_blueprint(get_gear_blueprint, url_prefix='/get_gear')
-app.register_blueprint(add_favourite_gear_blueprint, urlprefix='/add_favourite_gear')
-app.register_blueprint(get_favourite_gear_blueprint, urlprefix='/get_favourite_gear')
-app.register_blueprint(add_favourite_trail_blueprint, urlprefix='/add_favourite_trail')
-app.register_blueprint(get_favourite_trails_blueprint, urlprefix='/get_favourite_trails')
-app.register_blueprint(add_user_blueprint, urlprefix='/add_user')
-app.register_blueprint(get_user_blueprint, urlprefix='/get_user')
+app.register_blueprint(add_favourite_gear_blueprint, url_prefix='/add_favourite_gear')
+app.register_blueprint(get_favourite_gear_blueprint, url_prefix='/get_favourite_gear')
+app.register_blueprint(add_favourite_trail_blueprint, url_prefix='/add_favourite_trail')
+app.register_blueprint(get_favourite_trails_blueprint, url_prefix='/get_favourite_trails')
+app.register_blueprint(add_user_blueprint, url_prefix='/add_user')
+app.register_blueprint(get_user_blueprint, url_prefix='/get_user')

@@ -24,6 +24,7 @@ def trails_service():
 
     start_coords = start_coords.json()
     end_coords = end_coords.json()
+
     try:
         start_lat = start_coords["latitude"]
         start_long  = start_coords["longitude"]

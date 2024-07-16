@@ -11,4 +11,7 @@ def get_user(email):
 @get_user_blueprint.route('/<string:email>', methods=['GET'])
 def get_favourite_gear_endpoint(email):
     user = get_user(email)
+    if not user:
+        return jsonify({'error': 'User not found in the database'}), 404
+    
     return jsonify(user), 200

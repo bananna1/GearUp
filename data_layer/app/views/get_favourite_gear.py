@@ -11,4 +11,7 @@ def get_favourite_gear(email):
 @get_favourite_gear_blueprint.route('/<string:email>', methods=['GET'])
 def get_favourite_gear_endpoint(email):
     gear = get_favourite_gear(email)
+    if not gear:
+        error_str = f'No favourite gear found for {email} in the database'
+        return jsonify({'error': error_str}), 404
     return jsonify(gear), 200
