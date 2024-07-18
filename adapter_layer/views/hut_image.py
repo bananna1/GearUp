@@ -1,8 +1,6 @@
 from flask import Blueprint, request, jsonify
 import requests
 import base64
-from PIL import Image
-from io import BytesIO
 from adapter_layer.consts import GMAPS_API_KEY
 
 # Create a blueprint
@@ -20,7 +18,7 @@ def get_hut_image():
     if response.status_code == 200:
         image_data = base64.b64encode(response.content).decode('utf-8')
 
-        return jsonify({
+        return jsonify({ 
             "image_base64": image_data
         })
     else:
