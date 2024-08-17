@@ -20,7 +20,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 login_blueprint = Blueprint('login', __name__)
 
 # Path to the client_secret.json
-CLIENT_SECRETS_FILE = os.path.join(pathlib.Path(__file__).parent, 'client_secret.json')
+CLIENT_SECRETS_FILE = os.path.join(pathlib.Path(__file__).parent.parent, 'client_secret.json')
 
 flow = Flow.from_client_secrets_file(
     CLIENT_SECRETS_FILE,
@@ -28,15 +28,20 @@ flow = Flow.from_client_secrets_file(
     redirect_uri=REDIRECT_URI
 )
 
-@login_blueprint.route('/login')
+@login_blueprint.route('/')
 def login():
     logging.debug("Starting login process.")
+
+    session['next_url'] = request.args.get('next') or url_for('home.home')
+
     logging.debug(f"REDIRECT_URI: {REDIRECT_URI}")
     authorization_url, state = flow.authorization_url()
     session['state'] = state
     logging.debug(f"Authorization URL: {authorization_url}")
     logging.debug(f"Session state set: {session['state']}")
     return redirect(authorization_url)
+
+
 
 @login_blueprint.route('/callback')
 def callback():
@@ -91,7 +96,9 @@ def callback():
             'name': first_name,
             'lastname': last_name
         })
-    return redirect(url_for('profile'))
+    
+    next_url = session.pop('next_url', url_for('favourites.favourites'))
+    return redirect(next_url)
 
 @login_blueprint.route('/logout')
 def logout():

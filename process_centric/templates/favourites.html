@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favourites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Your Favourites</h1>
+
+    <h2>Favourite Gear</h2>
+    {% if favourite_gear %}
+        <ul>
+            {% for gear in favourite_gear %}
+                <li>{{ gear['name'] }} - {{ gear['description'] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no favourite gear yet.</p>
+    {% endif %}
+
+    <h2>Favourite Trails</h2>
+    {% if favourite_trails %}
+        <ul>
+            {% for trail in favourite_trails %}
+                <li>{{ trail['name'] }} - {{ trail['location'] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no favourite trails yet.</p>
+    {% endif %}
+
+</body>
+</html>

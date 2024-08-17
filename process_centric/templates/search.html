@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Search Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .search-container {
+            max-width: 500px;
+            margin: auto;
+        }
+        .search-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .search-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .search-container label {
+            margin-top: 10px;
+        }
+        .search-container input {
+            padding: 10px;
+            margin-top: 5px;
+        }
+        .search-container button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #357AE8;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h2>Search</h2>
+        <form id="search-form">
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" required>
+
+            <label for="radius">Radius (in km):</label>
+            <input type="number" id="radius" name="radius" placeholder="Enter radius" min="1" required>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect input values
+            const location = document.getElementById('location').value.trim();
+            const radius = document.getElementById('radius').value.trim();
+
+            // Basic validation (optional but recommended)
+            if (!location || !radius) {
+                alert('Please provide both location and radius.');
+                return;
+            }
+
+            // Construct the JSON payload
+            const data = {
+                location: location,
+                radius: radius
+            };
+
+            // Send the POST request with JSON data
+            fetch(url_for('search.search'), { // Adjust the URL based on your Flask route
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                // Check if the response is a redirect
+                if (response.redirected) {
+                    // Navigate to the redirected URL
+                    window.location.href = response.url;
+                } else if (response.ok) {
+                    // If not redirected but response is OK, handle accordingly
+                    response.json().then(data => {
+                        console.log('Success:', data);
+                        // Optionally display the results on the page
+                    });
+                } else {
+                    // Handle errors
+                    response.text().then(text => {
+                        console.error('Error:', text);
+                        alert('An error occurred: ' + text);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Fetch Error:', error);
+                alert('An error occurred while processing your request.');
+            });
+        });
+    </script>
+</body>
+</html>
