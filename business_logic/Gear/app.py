@@ -1,9 +1,7 @@
-from flask import Flask, request, redirect, jsonify
+from flask import Flask, request, jsonify
 import requests
 import json
-import psycopg2
-from dotenv import load_dotenv
-import os
+
 from consts import DATA_URL
 
 app = Flask(__name__)
@@ -21,13 +19,13 @@ def suggest_gear():
     temp = data["temperature"]
     weather = data["weather"]
     prec = data["prec"]
-    gender = data["gender"]
-    parameters = calculate_gear_parameters(length, max_elevation, min_elevation, temp, weather, prec)
+    #gender = data["gender"]
+    [warmth, waterproof, level] = calculate_gear_parameters(length, max_elevation, min_elevation, temp, weather, prec)
     gear_response = requests.post(DATA_URL, json = {
-        "warmth": parameters[0], 
-        "waterproof": parameters[1], 
-        "level": parameters[2],
-        "gender": gender,
+        "warmth": warmth, 
+        "waterproof": waterproof, 
+        "level": level,
+        "gender": 'any',
     })
     gear = gear_response.json()
     return jsonify(gear)
@@ -49,11 +47,11 @@ def calculate_gear_parameters(length, max_elevation, min_elevation, temp, weathe
     if max_elevation > 2000 and warmth == "low": 
         warmth = "medium"
 
-    if weather["main"] == "Snow":
+    if weather == "Snow":
         warmth = "high"
         waterproof = 10000
 
-    if weather["main"] == "Rain":
+    if weather == "Rain":
         if prec >= 3:
             waterproof = 20000
         elif prec >= 1:

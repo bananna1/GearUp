@@ -4,7 +4,7 @@ import requests
 from process_centric.consts import *
 
 from process_centric.views.login import login_blueprint
-from process_centric.views.display_huts_results import display_results_blueprint
+from process_centric.views.results_details import results_details_blueprint
 from process_centric.views.search import search_blueprint
 from process_centric.views.home import home_blueprint
 from process_centric.views.favourites import favourites_blueprint
@@ -12,7 +12,7 @@ from process_centric.views.favourites import favourites_blueprint
 app = Flask(__name__)
 
 app.register_blueprint(login_blueprint, url_prefix='/auth')
-app.register_blueprint(display_results_blueprint, url_prefix='/results')
+app.register_blueprint(results_details_blueprint, url_prefix='/details')
 app.register_blueprint(search_blueprint, url_prefix='/search')
 app.register_blueprint(home_blueprint)
 app.register_blueprint(favourites_blueprint, url_prefix='/favourites')

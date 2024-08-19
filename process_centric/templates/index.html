@@ -55,12 +55,12 @@
     <header>Welcome to GearUp!</header>
 
     <div class="button-container">
-        <a href="{{ url_for('search.search') }}" class="button">Go to Search Page</a>
+        <a href="{{ url_for('search.search_page') }}" class="button">Go to Search Page</a>
     </div>
 
     <div class="icon-container">
         <a href="{{ url_for('favourites.favourites') }}">
-            <img src="{{ url_for('static', filename='images/user.jpeg') }}" alt="View Favorites">
+            <img src="{{ url_for('static', filename='images/user.png') }}" alt="View Favorites">
         </a>
     </div>
 </body>

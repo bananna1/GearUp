@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import requests
-from consts import COORDS_URL, HUTS_URL
+from consts import COORDS_URL, HUTS_URL, HUT_IMAGE_URL
 
 app = Flask(__name__)
 
@@ -24,9 +24,28 @@ def get_huts():
         "radius": radius
     })
     huts_data = huts_data.json()
+
+
     final_data = []
     for hut in huts_data:
+
+        photo_reference = hut.get('photos')[0].get('photo_reference')
+
+        photo_height = hut.get('photos')[0].get('height')
+        photo_width = hut.get('photos')[0].get('width')
+
+        """
+        image_data = requests.post(HUT_IMAGE_URL, json={
+            'photo reference': photo_reference,
+            'width': photo_width,
+            'height': photo_height
+        })
+
+        image_data = image_data.json().get('image_base64')  
+        """
+
         data = {
+            'id': hut.get('place_id'),
             'name': hut.get('name'),
             'rating': hut.get('rating'),
             'coordinates': {
@@ -34,9 +53,9 @@ def get_huts():
                 'hut_longitude': hut.get('geometry').get('location').get('lng'),
             },
             'photo': {
-                'photo reference': hut.get('photos')[0].get('photo_reference'),
-                'photo height': hut.get('photos')[0].get('height'),
-                'photo width': hut.get('photos')[0].get('width')
+                'photo reference': photo_reference,
+                'photo height': photo_height,
+                'photo width': photo_width,
                 }, 
         }
         final_data.append(data)

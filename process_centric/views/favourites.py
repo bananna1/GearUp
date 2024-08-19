@@ -11,7 +11,8 @@ def favourites():
         return redirect(url_for('login.login', next=url_for('favourites.favourites')))
 
     logging.debug('SONO QUI')
-    email = session['user']['email']
+    email = session['email']
+    
     favourite_gear_response = requests.get(f'{GET_FAVOURITE_GEAR_URL}/{email}')
 
     favourite_gear = []

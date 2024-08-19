@@ -51,7 +51,6 @@ def trails_service():
     length = trail_data["routes"][0]["legs"][0]["distance"]["value"]
 
 
-    # Inside the trails_service function in APP 1
     elevations_response = requests.post(ELEVATION_URL, json={
         "route": polyline,
         "length": length

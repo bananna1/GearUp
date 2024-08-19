@@ -1,111 +1,166 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Search Interface</title>
+    <title>Search Huts</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lucida Sans';
+            background-color: #f4f4f4;
             margin: 50px;
+            color: #333;
         }
         .search-container {
-            max-width: 500px;
+            max-width: 600px;
             margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         .search-container h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            color: #144478;
         }
         .search-container form {
             display: flex;
             flex-direction: column;
         }
         .search-container label {
-            margin-top: 10px;
+            margin-top: 15px;
+            font-weight: bold;
         }
         .search-container input {
-            padding: 10px;
-            margin-top: 5px;
+            padding: 12px;
+            margin-top: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
         }
         .search-container button {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #4285F4;
+            padding: 12px;
+            background-color: #144478;
             color: white;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
         .search-container button:hover {
             background-color: #357AE8;
         }
+        .weather-box {
+            margin-top: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        .weather-box h3 {
+            margin-bottom: 20px;
+            color: #144478;
+        }
+        .weather-box .weather-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            background-color: #144478;
+        }
+        .weather-box p {
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .results-container {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .results-container h2 {
+            text-align: center;
+            color: #333;
+        }
+        .results-container h3 {
+            margin-bottom: 20px;
+            color: #144478;
+        }
+        .hut-box {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+        }
+        .hut-box h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .hut-box p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+        .hut-box img {
+            max-width: 30%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
+    
     <div class="search-container">
         <h2>Search</h2>
-        <form id="search-form">
+        <form action="{{ url_for('search.search') }}" method="POST">
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" placeholder="Enter location" required>
+            <input type="text" id="location" name="location" placeholder="Enter location" value="{{ request.form.get('location') or '' }}" required>
 
             <label for="radius">Radius (in km):</label>
-            <input type="number" id="radius" name="radius" placeholder="Enter radius" min="1" required>
+            <input type="number" id="radius" name="radius" placeholder="Enter radius" min="1" value="{{ request.form.get('radius') }}" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" min="{{ today }}" max="{{ max_date }}" value="{{ request.form.get('date') }}" required>
 
             <button type="submit">Search</button>
         </form>
     </div>
 
-    <script>
-        document.getElementById('search-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+    {% if results %}
+    <div class="weather-box">
+        <h3>Weather</h3>
+        <div class="weather-image">
+            <img src="https://openweathermap.org/img/wn/{{ results.weather_results['icon_id'] }}@2x.png" alt="Weather Icon">
+        </div>
+        <p>
+            Weather: {{ results.weather_results.weather.main }}<br>
+            {% if results.weather_results.weather.main == 'Rain' %}
+            Precipitations (mm): {{ results.weather_results.weather.prec }}<br>
+            {% endif %}
+            Temperature: {{ results.weather_results.weather.temperature }}°C
+        </p>
+    </div>
 
-            // Collect input values
-            const location = document.getElementById('location').value.trim();
-            const radius = document.getElementById('radius').value.trim();
-
-            // Basic validation (optional but recommended)
-            if (!location || !radius) {
-                alert('Please provide both location and radius.');
-                return;
-            }
-
-            // Construct the JSON payload
-            const data = {
-                location: location,
-                radius: radius
-            };
-
-            // Send the POST request with JSON data
-            fetch(url_for('search.search'), { // Adjust the URL based on your Flask route
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                // Check if the response is a redirect
-                if (response.redirected) {
-                    // Navigate to the redirected URL
-                    window.location.href = response.url;
-                } else if (response.ok) {
-                    // If not redirected but response is OK, handle accordingly
-                    response.json().then(data => {
-                        console.log('Success:', data);
-                        // Optionally display the results on the page
-                    });
-                } else {
-                    // Handle errors
-                    response.text().then(text => {
-                        console.error('Error:', text);
-                        alert('An error occurred: ' + text);
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Fetch Error:', error);
-                alert('An error occurred while processing your request.');
-            });
-        });
-    </script>
+    <div class="results-container">
+        <h2>Search Results</h2>
+        <h3>Huts</h3>
+        {% for hut in results.huts_results %}
+        <a href="{{ url_for('details.results_details', hut_id=hut['id']) }}" class="hut-link">            <div class="hut-box">
+                <h3>{{ hut.name }}</h3>
+                <p>Rating: {{ hut.rating }}</p>
+                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth={{ hut.photo['photo width'] }}&maxheight={{ hut.photo['photo height'] }}&photoreference={{ hut.photo['photo reference'] }}&key={{ key }}" alt="{{ hut.name }}">
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
 </body>
 </html>

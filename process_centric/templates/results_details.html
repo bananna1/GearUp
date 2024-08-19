@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hut_data['name'] }} - Details</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans';
+            background-color: #f4f4f4;
+            margin: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4285F4;
+            text-align: center;
+        }
+        h2 {
+            color: #144478;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>{{ hut_data['name'] }}</h1>
+
+    <div class="image-container">
+        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&maxheight=600&photoreference={{ hut_data['photo']['photo reference'] }}&key={{ key }}" alt="{{ hut_data['name'] }}">
+    </div>
+
+    <h2>Trail Information</h2>
+    <p>Length: {{ trail.length }} km</p>
+    <p>Elevation: {{ trail.elevations }} meters</p>
+
+    <div class="weather-box">
+        <h3>Weather</h3>
+        <div class="weather-image">
+            <img src="https://openweathermap.org/img/wn/{{ results.weather_results['icon_id'] }}@2x.png" alt="Weather Icon">
+        </div>
+        <p>
+            Weather: {{ results.weather_results.weather.main }}<br>
+            {% if results.weather_results.weather.main == 'Rain' %}
+            Precipitations (mm): {{ results.weather_results.weather.prec }}<br>
+            {% endif %}
+            Temperature: {{ results.weather_results.weather.temperature }}°C
+        </p>
+    </div>
+
+    <h2>Recommended Gear</h2>
+    <ul>
+        {% for item in gear %}
+        <li>{{ item.name }} - {{ item.description }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Start Location</h2>
+    <p>{{ start_location }}</p>
+
+    <h2>Date of Visit</h2>
+    <p>{{ date }}</p>
+</div>
+
+</body>
+</html>

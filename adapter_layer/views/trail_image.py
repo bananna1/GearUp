@@ -16,7 +16,7 @@ def get_trail_image():
     params = {
         "size": "1920x1080",
         "maptype": "hybrid",
-        "path": f"color:0xff0000ff|weight:5|enc:{route}",  # Use the encoded polyline from the route
+        "path": f"color:0xff0000ff|weight:5|enc:{route}",  # encoded polyline
         "key": GMAPS_API_KEY,
     }
 

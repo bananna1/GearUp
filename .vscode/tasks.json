@@ -1,0 +1,88 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Start process_centric",
+            "type": "shell",
+            "command": "cd process_centric && flask run",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+        },
+        {
+            "label": "Start data_layer",
+            "type": "shell",
+            "command": "cd data_layer && flask run -p 5051",
+            "problemMatcher": [],
+            "dependsOn": "Start process_centric",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Start business_logic/Gear",
+            "type": "shell",
+            "command": "cd business_logic/Gear && flask run -p 5004",
+            "problemMatcher": [],
+            "dependsOn": "Start data_layer",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            
+        },
+        {
+            "label": "Start business_logic/Huts",
+            "type": "shell",
+            "command": "cd business_logic/Huts && flask run -p 5003",
+            "problemMatcher": [],
+            "dependsOn": "Start business_logic/Gear",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            
+        },
+        {
+            "label": "Start business_logic/Trails",
+            "type": "shell",
+            "command": "cd business_logic/Trails && flask run -p 5002",
+            "problemMatcher": [],
+            "dependsOn": "Start business_logic/Huts",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            
+        },
+        {
+            "label": "Start business_logic/Weather",
+            "type": "shell",
+            "command": "cd business_logic/Weather && flask run -p 5001",
+            "problemMatcher": [],
+            "dependsOn": "Start business_logic/Trails",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            
+        },
+        {
+            "label": "Start adapter_layer",
+            "type": "shell",
+            "command": "cd adapter_layer && flask run -p 5050",
+            "problemMatcher": [],
+            "dependsOn": "Start business_logic/Weather",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            
+        }
+    ]
+}
