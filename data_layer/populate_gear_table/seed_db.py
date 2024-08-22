@@ -41,5 +41,5 @@ def display_gear_table():
         for item in gear_items:
             print(item)
 
-#seed_db()
+seed_db()
 display_gear_table()

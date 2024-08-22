@@ -11,15 +11,15 @@ from process_centric.consts import *
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-# Configure logging
+
 logging.basicConfig(level=logging.DEBUG)
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 
-login_blueprint = Blueprint('login', __name__)
+auth_blueprint = Blueprint('auth', __name__)
 
-# Path to the client_secret.json
+
 CLIENT_SECRETS_FILE = os.path.join(pathlib.Path(__file__).parent.parent, 'client_secret.json')
 
 flow = Flow.from_client_secrets_file(
@@ -28,7 +28,7 @@ flow = Flow.from_client_secrets_file(
     redirect_uri=REDIRECT_URI
 )
 
-@login_blueprint.route('/')
+@auth_blueprint.route('/login')
 def login():
     logging.debug("Starting login process.")
 
@@ -43,11 +43,10 @@ def login():
 
 
 
-@login_blueprint.route('/callback')
+@auth_blueprint.route('/callback')
 def callback():
     logging.debug("Callback route called.")
 
-    # Ensure session state exists before use
     if 'state' not in session:
         logging.error("Session state not found. Possible session timeout or CSRF attack.")
         flash("Session expired or invalid. Please try logging in again.")
@@ -100,15 +99,9 @@ def callback():
     next_url = session.pop('next_url', url_for('favourites.favourites'))
     return redirect(next_url)
 
-@login_blueprint.route('/logout')
+@auth_blueprint.route('/logout', methods=['GET'])
 def logout():
     logging.debug("Logging out.")
     session.clear()
     return redirect('/')
 
-@login_blueprint.route('/profile')
-def profile():
-    if 'google_id' not in session:
-        logging.debug("No user in session, redirecting to login.")
-        return redirect(url_for('login'))
-    return f'Hello, {session["email"]}!'

@@ -5,7 +5,7 @@
     <title>Search Huts</title>
     <style>
         body {
-            font-family: 'Lucida Sans';
+            font-family: 'Lucida Sans', sans-serif;
             background-color: #f4f4f4;
             margin: 50px;
             color: #333;
@@ -67,7 +67,7 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            background-color: #144478;
+            background-color: #90D5FF;
         }
         .weather-box p {
             margin-top: 20px;
@@ -113,22 +113,86 @@
             border: 1px solid #ddd;
             margin-top: 10px;
         }
+        .star-rating {
+            display: inline-block;
+            font-size: 1.5rem;
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+        .star-rating .star {
+            color: #ddd;
+            display: inline-block;
+            position: relative;
+            cursor: default;
+        }
+        .star-rating .star.filled {
+            color: gold;
+        }
+        .icon-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .icon-container a, .icon-container form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        .home-icon {
+            background-image: url('/static/images/home.png'); 
+        }
+        .favourites-icon {
+            background-image: url('/static/images/favourites.png'); 
+        }
+        .logout-icon {
+            background-image: url('/static/images/logout.png'); 
+        }
     </style>
 </head>
 <body>
+
+    <div class="icon-container">
+        <a href="{{ url_for('home.home') }}" class="home-icon" title="Home"></a>
+        <a href="{{ url_for('favourites.favourites') }}" class="favourites-icon" title="Favourites"></a>
+        <a href="{{ url_for('auth.logout') }}" class="logout-icon" title="Logout"></a>
+    </div>
+    
     
     <div class="search-container">
         <h2>Search</h2>
         <form action="{{ url_for('search.search') }}" method="POST">
             <label for="location">Location:</label>
             <input type="text" id="location" name="location" placeholder="Enter location" value="{{ request.form.get('location') or '' }}" required>
-
+        
             <label for="radius">Radius (in km):</label>
             <input type="number" id="radius" name="radius" placeholder="Enter radius" min="1" value="{{ request.form.get('radius') }}" required>
-
+        
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" min="{{ today }}" max="{{ max_date }}" value="{{ request.form.get('date') }}" required>
-
+        
+            <label for="gender">Gender:</label>
+            <div>
+                <input type="radio" id="man" name="gender" value="man" {% if request.form.get('gender') == 'man' %}checked{% endif %}>
+                <label for="man">Man</label>
+            </div>
+            <div>
+                <input type="radio" id="woman" name="gender" value="woman" {% if request.form.get('gender') == 'woman' %}checked{% endif %}>
+                <label for="woman">Woman</label>
+            </div>
+            <div>
+                <input type="radio" id="not_specified" name="gender" value="not_specified" {% if request.form.get('gender') == 'not_specified' %}checked{% endif %}>
+                <label for="not_specified">Not Specified</label>
+            </div>
+        
             <button type="submit">Search</button>
         </form>
     </div>
@@ -152,10 +216,19 @@
         <h2>Search Results</h2>
         <h3>Huts</h3>
         {% for hut in results.huts_results %}
-        <a href="{{ url_for('details.results_details', hut_id=hut['id']) }}" class="hut-link">            <div class="hut-box">
+        <a href="{{ url_for('details.results_details', hut_id=hut['id'], gender=gender) }}" class="hut-link">
+            <div class="hut-box">
                 <h3>{{ hut.name }}</h3>
-                <p>Rating: {{ hut.rating }}</p>
-                <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth={{ hut.photo['photo width'] }}&maxheight={{ hut.photo['photo height'] }}&photoreference={{ hut.photo['photo reference'] }}&key={{ key }}" alt="{{ hut.name }}">
+                <p>
+                    Rating: {{ hut.rating }}
+                </p>
+
+                {% if hut.photo['photo_reference'] and hut.photo['photo_width'] and hut.photo['photo_height'] %}
+                    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth={{ hut.photo['photo_width'] }}&maxheight={{ hut.photo['photo_height'] }}&photoreference={{ hut.photo['photo_reference'] }}&key={{ key }}"
+                        alt="{{ hut.name }}"
+                        onerror="this.onerror=null; this.src='/static/images/placeholder.png';">
+                {% endif %}
+                
             </div>
         </a>
         {% endfor %}

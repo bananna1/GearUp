@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
+            position: relative; /* Required for absolute positioning */
         }
 
         header {
@@ -34,7 +35,7 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
+            background-color: #144478;
             color: white;
             text-decoration: none;
             text-align: center;
@@ -42,6 +43,9 @@
 
         .icon-container {
             margin-top: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
         }
 
         .icon-container img {
@@ -49,10 +53,45 @@
             height: 50px;
             cursor: pointer;
         }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 30px; 
+        }
+
+        .image-container img {
+            width: 40%; 
+            max-width: 400px; 
+        }
+
+        /* Position the logout icon in the top-right corner */
+        .logout-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 24px; /* Set size for the logout icon */
+            height: 24px;
+            background-image: url('/static/images/logout.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <header>Welcome to GearUp!</header>
+
+    <!-- Logout icon positioned in the top-right corner -->
+    <a href="{{ url_for('auth.logout') }}" class="logout-icon" title="Logout"></a>
+
+    <div class="image-container">
+        <img src="{{ url_for('static', filename='images/gearup_logo.png') }}" alt="Logo" class="center">
+    </div>
+
+    <h1>Welcome, {{ name }} {{ lastname }}!</h1>
 
     <div class="button-container">
         <a href="{{ url_for('search.search_page') }}" class="button">Go to Search Page</a>
@@ -63,5 +102,6 @@
             <img src="{{ url_for('static', filename='images/user.png') }}" alt="View Favorites">
         </a>
     </div>
+
 </body>
 </html>

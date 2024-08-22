@@ -14,6 +14,6 @@ def add_favourite_trail(email, gearid):
 @add_favourite_trail_blueprint.route('/', methods=['POST'])
 def add_favourite_trail_endpoint():
     data = request.get_json()
-    add_favourite_trail(data['email'], data['gearid'])
+    add_favourite_trail(data['email'], data['trailid'])
     return jsonify({'message': 'Favourite gear inserted successfully'}), 201
 

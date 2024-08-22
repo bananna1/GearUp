@@ -23,5 +23,5 @@ def get_weather_forecasts():
         else:
             return jsonify({"error": "Problem with your weather request"}), 404
 
-    except KeyError:
-        return jsonify({"error": "Invalid request data"}), 400
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500

@@ -9,29 +9,46 @@ get_gear_blueprint = Blueprint('get_gear', __name__)
 
 @get_gear_blueprint.route('/id/<int:code>', methods=['GET'])
 def get_gear(code):
+    
     gear = Gear.query.get(code).to_json()
     return jsonify(gear), 200
 
 @get_gear_blueprint.route('/', methods = ['POST'])
 def get_gear_specs():
-    logging.debug('SONO QUIIIIIIIIIIIIIIIIIIIIIIIIIII')
     specs = request.json
+    
+    category = specs.get('category')
     warmth = specs.get('warmth')
     waterproof = specs.get('waterproof')
     level = specs.get('level')
     gender = specs.get('gender')
 
+    filter_params = {
+        'category': category,
+        'warmth': warmth,
+        'waterproof': waterproof,
+        'level': level,
+        'gender': gender
+    }
+
     logging.debug(warmth, waterproof, level, gender)
 
+    filtered_params = {key: value for key, value in filter_params.items() if value != 'any'}
+
     
-    if gender != 'any':
-        gear = Gear.query.filter_by(warmth=warmth, waterproof=waterproof, level=level, gender=gender)
+    query = Gear.query
+
+    for key, value in filtered_params.items():
+        if key == 'waterproof':
+            
+            query = query.filter(Gear.waterproof >= value)
+        else:
+            
+            query = query.filter(getattr(Gear, key) == value)
+
     
-    else:
-        gear = Gear.query.filter_by(warmth=warmth, waterproof=waterproof, level=level)
+    gear = query.all()
+    gear_list = [item.to_json() for item in gear]
 
-    gear = [item.to_json() for item in gear.all()]
-
-    logging.debug(f"Gear found: {gear}")
-    return jsonify(gear), 200
-
+    logging.debug(f"Gear found: {gear_list}")
+    return jsonify(gear_list), 200

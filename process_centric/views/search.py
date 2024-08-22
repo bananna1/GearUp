@@ -12,58 +12,93 @@ search_blueprint = Blueprint('search', __name__)
 
 @search_blueprint.route('/')
 def search_page():
+    if 'google_id' not in session:
+        logging.debug("No user in session, redirecting to login.")
+        login_url = url_for('auth.login')
+        return redirect(login_url)
+
     today = datetime.datetime.now().date()
-    max_date = today + datetime.timedelta(days=5)
+    max_date = today + datetime.timedelta(days=4)
     return render_template('search.html', today=today, max_date=max_date)
 
 @search_blueprint.route('/results', methods=['POST', 'GET'])
 def search():
     if 'google_id' not in session:
-        return redirect(url_for('login.login', next=url_for('search.search')))
+        logging.debug("No user in session, redirecting to login.")
+        login_url = url_for('auth.login')
+        return redirect(login_url)
     
-    location = request.form.get('location')
-    #print(location)
-    radius = int(request.form.get('radius')) * 1000 # from kilometersto meters
-    #print(radius)
-    date = request.form.get('date')
+    try:
+        location = request.form.get('location')
+        #print(location)
+        radius = int(request.form.get('radius')) * 1000 # from kilometers to meters
+        #print(radius)
+        date = request.form.get('date')
 
-    date = date.split("-")
+        date = date.split("-")
 
-    for i in range(len(date)):
-        date[i] = int(date[i])
+        for i in range(len(date)):
+            date[i] = int(date[i])
 
 
-    date.append(10)
-    date.append(0)
-    date.append(0)
+        date.append(10)
+        date.append(0)
+        date.append(0)
 
-    logging.debug(date)
+        #logging.debug(date)
 
-    huts_results = requests.post(HUTS_URL, json = {
-        'location': location,
-        'radius': radius
-    })
-    huts_results = huts_results.json()
-    #print(huts_results)
-    weather_results = requests.post(WEATHER_URL, json = {
-        'date': date,
-        'location': location
-    })
-    weather_results = weather_results.json()
+        gender = request.form.get('gender')
 
-    results = {
-        'huts_results': huts_results,
-        'weather_results': weather_results
-    }
+        huts_results = requests.post(HUTS_URL, json = {
+            'location': location,
+            'radius': radius
+        })
+        huts_results = huts_results.json()
+        #print(huts_results)
+        weather_results = requests.post(WEATHER_URL, json = {
+            'date': date,
+            'location': location
+        })
+        weather_results = weather_results.json()
 
-    session['huts_results'] = huts_results
-    session['weather_results'] = weather_results
-    session['search_date'] = date
-    session['search_location'] = location
+        results = {
+            'huts_results': huts_results,
+            'weather_results': weather_results
+        }
 
+        session['huts_results'] = huts_results
+        session['weather_results'] = weather_results
+        session['search_date'] = date
+        session['search_location'] = location
+        session['gender'] = gender
+
+        today = datetime.datetime.now().date()
+        max_date = today + datetime.timedelta(days=4)
+
+    except Exception as e:
+        results = {
+            'huts_results': session['huts_results'],
+            'weather_results': session['weather_results']
+        }   
+        location = session['search_location']
+        date = session['search_date']
+        gender = session['gender']
+        #logging.debug(session)
+
+        today = datetime.datetime.now().date()
+        max_date = today + datetime.timedelta(days=4)
+
+
+
+    return render_template('search.html', today=today, max_date=max_date, results=results, key=GMAPS_API_KEY, location=location, chosen_date=date, gender=gender)
+
+
+
+    
+    #logging.debug(session)
 
     today = datetime.datetime.now().date()
-    max_date = today + datetime.timedelta(days=5)
+    max_date = today + datetime.timedelta(days=4)
 
 
-    return render_template('search.html', today=today, max_date=max_date, results=results, key=GMAPS_API_KEY, location=location, chosen_date=date)
+    return render_template('search.html', today=today, max_date=max_date, results=results, key=GMAPS_API_KEY, location=location, chosen_date=date, gender=gender)

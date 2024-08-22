@@ -57,6 +57,11 @@ class FavouriteGear(db.Model):
             'gearid': self.gearid
         }
 
+    __table_args__ = (
+        db.UniqueConstraint('email', 'gearid', name='uix_email_gearid'),
+    )
+
+
 
 class FavouriteTrails(db.Model):
     id = db.Column("id", db.Integer, primary_key=True, autoincrement=True)

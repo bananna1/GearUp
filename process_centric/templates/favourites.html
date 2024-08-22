@@ -4,32 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourites</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        .gear-section {
+            margin-top: 40px;
+        }
+        .gear-section h2 {
+            border-bottom: 2px solid #144478;
+            padding-bottom: 10px;
+        }
+        .gear-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .gear-item h3 {
+            margin: 0;
+            color: #144478;
+        }
+        .gear-item p {
+            margin: 5px 0;
+        }
+        .gear-item a {
+            color: #144478;
+            text-decoration: none;
+        }
+        .gear-item a:hover {
+            text-decoration: underline;
+        }
+        .icon-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center; 
+        }
+        .icon-container a, .icon-container form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+        }
+        .home-icon {
+            background-image: url('/static/images/home.png'); 
+        }
+        .favourites-icon {
+            background-image: url('/static/images/favourites.png'); 
+        }
+        .logout-icon {
+            background-image: url('/static/images/logout.png'); 
+        }
+    </style>
 </head>
 <body>
-    <h1>Your Favourites</h1>
 
-    <h2>Favourite Gear</h2>
-    {% if favourite_gear %}
-        <ul>
-            {% for gear in favourite_gear %}
-                <li>{{ gear['name'] }} - {{ gear['description'] }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have no favourite gear yet.</p>
-    {% endif %}
+    <div class="icon-container">
+        <a href="{{ url_for('home.home') }}" class="home-icon" title="Home"></a>
+        <a href="{{ url_for('favourites.favourites') }}" class="favourites-icon" title="Favourites"></a>
+        <a href="{{ url_for('auth.logout') }}" class="logout-icon" title="Logout"></a>
+    </div>
 
-    <h2>Favourite Trails</h2>
-    {% if favourite_trails %}
-        <ul>
-            {% for trail in favourite_trails %}
-                <li>{{ trail['name'] }} - {{ trail['location'] }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have no favourite trails yet.</p>
-    {% endif %}
+    <h1>Your Favourite Gear</h1>
+
+    <div class="gear-section">
+        {% if favourite_gear %}
+        <div class="gear-category">
+            <h3>{{ category | capitalize }}</h3>
+                {% for item in favourite_gear %}
+                <div class="gear-item">
+                    <h4>{{ item.description }}</h4>
+                    <p>Category: {{ item.category }}</p>
+                    <p>Gender: {% if item.gender == "W" %}Woman{% elif item.gender == "M" %}Man{% else %}Unisex{% endif %}</p>
+                    <p>Level: {{ item.level | capitalize }}</p>
+                    <p>{% if item.warmth != "N" %}Warmth: {{ item.warmth | capitalize }}{% endif %}</p>
+                    <p>{% if item.waterproof >= 5000 %}Waterproof: {{ item.waterproof }}mm{% endif %}</p>
+                    <p><a href="{{ item.link }}" target="_blank">View Product</a></p>
+                </div>
+                {% endfor %}
+        </div>
+        {% else %}
+        <p>You don't have any favourite gear yet</p>
+        {% endif %}
+    </div>
+
 
 </body>
 </html>

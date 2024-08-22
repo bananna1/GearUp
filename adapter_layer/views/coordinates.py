@@ -2,22 +2,21 @@ from flask import Blueprint, request, jsonify
 import requests
 from adapter_layer.consts import GMAPS_API_KEY
 
-# Create a blueprint
 get_coordinates_blueprint = Blueprint('get_coordinates', __name__)
 
 @get_coordinates_blueprint.route("/", methods=["POST"])
 def get_coordinates():
     base_url = "https://maps.googleapis.com/maps/api/geocode/json"
 
-    data = request.json
-    location = data["location"]
-
-    params = {
-        "address": location,
-        "key": GMAPS_API_KEY
-    }
-
     try:
+        data = request.json
+        location = data["location"]
+
+        params = {
+            "address": location,
+            "key": GMAPS_API_KEY
+        }
+        
         response = requests.get(base_url, params=params)
         data = response.json()
 

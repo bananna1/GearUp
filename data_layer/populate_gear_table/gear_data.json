@@ -191,7 +191,7 @@
         "gender": "W",
         "body part": "upper body",
         "category": "jacket",
-        "warmth": "high",
+        "warmth": "low",
         "waterproof": 25000,
         "level": "advanced",
         "link": "https://www.decathlon.it/p/giacca-montagna-impermeabile-donna-mh500/_/R-p-307383?mc=8789598" 
@@ -233,7 +233,7 @@
         "body part": "upper body",
         "category": "jacket",
         "warmth": "low",
-        "waterproof": 10000,
+        "waterproof": 5000,
         "level": "beginner",
         "link": "https://www.decathlon.it/p/giacca-trekking-uomo-raincut-1-2-zip-nera/_/R-p-5332?mc=8300326" 
     },
@@ -269,7 +269,7 @@
         "body part": "upper body",
         "category": "jacket",
         "warmth": "high",
-        "waterproof": 10000,
+        "waterproof": 5000,
         "level": "intermediate",
         "link": "https://www.decathlon.it/p/giacca-trekking-uomo-sh100-x-warm-10-c/_/R-p-331992?mc=8641932" 
     },

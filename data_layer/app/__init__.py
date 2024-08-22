@@ -29,6 +29,7 @@ from data_layer.app.views.add_favourite_trail import add_favourite_trail_bluepri
 from data_layer.app.views.get_favourite_trails import get_favourite_trails_blueprint
 from data_layer.app.views.add_user import add_user_blueprint
 from data_layer.app.views.get_user import get_user_blueprint
+from data_layer.app.views.remove_favourite_gear import remove_favourite_gear_blueprint
 
 
 app.register_blueprint(get_gear_blueprint, url_prefix='/get_gear')
@@ -38,3 +39,4 @@ app.register_blueprint(add_favourite_trail_blueprint, url_prefix='/add_favourite
 app.register_blueprint(get_favourite_trails_blueprint, url_prefix='/get_favourite_trails')
 app.register_blueprint(add_user_blueprint, url_prefix='/add_user')
 app.register_blueprint(get_user_blueprint, url_prefix='/get_user')
+app.register_blueprint(remove_favourite_gear_blueprint, url_prefix="/remove_favourite_gear")
