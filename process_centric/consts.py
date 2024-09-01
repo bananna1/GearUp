@@ -7,13 +7,13 @@ SCOPES = ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googl
 REDIRECT_URI = 'http://localhost:5000/auth/callback'
 
 
-GEAR_URL = "http://127.0.0.1:5004/gear"
-WEATHER_URL = "http://127.0.0.1:5001/weather"
-HUTS_URL = "http://127.0.0.1:5003/huts"
-TRAILS_URL = "http://127.0.0.1:5002/trails"
+GEAR_URL = "http://gear:5004/gear"
+WEATHER_URL = "http://weather:5001/weather"
+HUTS_URL = "http://huts:5003/huts"
+TRAILS_URL = "http://trails:5002/trails"
 
 
-DATA_LAYER_URL = 'http://localhost:5051'
+DATA_LAYER_URL = 'http://data_layer:5051'
 ADD_USER_URL = DATA_LAYER_URL + "/add_user/"
 GET_USER_URL = DATA_LAYER_URL + "/get_user"
 GET_GEAR_URL = DATA_LAYER_URL + "/get_gear/id/"

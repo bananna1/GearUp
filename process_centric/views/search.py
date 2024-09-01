@@ -2,11 +2,11 @@ from flask import Blueprint, request, redirect, url_for, session, render_templat
 import requests
 import json
 import logging
-from process_centric.app.consts import HUTS_URL
-from process_centric.app.consts import WEATHER_URL
+from process_centric.consts import HUTS_URL
+from process_centric.consts import WEATHER_URL
 import datetime
 import urllib.parse
-from process_centric.app.consts import GMAPS_API_KEY
+from process_centric.consts import GMAPS_API_KEY
 
 search_blueprint = Blueprint('search', __name__)
 

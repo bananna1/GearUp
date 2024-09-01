@@ -7,7 +7,7 @@ import os
 import sys
 import pathlib
 import logging
-from process_centric.app.consts import *
+from process_centric.consts import *
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -34,11 +34,11 @@ def login():
 
     session['next_url'] = request.args.get('next') or url_for('home.home')
 
-    logging.debug(f"REDIRECT_URI: {REDIRECT_URI}")
+    #logging.debug(f"REDIRECT_URI: {REDIRECT_URI}")
     authorization_url, state = flow.authorization_url()
     session['state'] = state
-    logging.debug(f"Authorization URL: {authorization_url}")
-    logging.debug(f"Session state set: {session['state']}")
+    #logging.debug(f"Authorization URL: {authorization_url}")
+    #logging.debug(f"Session state set: {session['state']}")
     return redirect(authorization_url)
 
 
@@ -71,7 +71,7 @@ def callback():
     except ValueError:
         logging.error("Invalid token.")
         flash("Invalid token received. Please try logging in again.")
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
     google_id = id_info.get('sub')
     email = id_info.get('email')
@@ -85,7 +85,7 @@ def callback():
 
     # Add user to the database if not already present
     url = f'{GET_USER_URL}/{email}'
-    logging.debug(f"Fetching user with URL: {url}")
+    #logging.debug(f"Fetching user with URL: {url}")
     user = requests.get(url)
 
     if user.status_code == 404:

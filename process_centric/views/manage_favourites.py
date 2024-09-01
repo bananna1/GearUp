@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, render_template, session, redirect, url_for, flash
 import requests
-from process_centric.app.consts import ADD_FAVOURITE_GEAR_URL, REMOVE_FAVOURITE_GEAR_URL
+from process_centric.consts import ADD_FAVOURITE_GEAR_URL, REMOVE_FAVOURITE_GEAR_URL
 import logging
 
 

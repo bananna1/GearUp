@@ -76,7 +76,7 @@ def get_huts():
 
     except Exception as e:
         logging.error(f"An unexpected error occurred: {str(e)}")
-        return jsonify({"error": "An unexpected error occurred."}), 500
+        return jsonify({"error": f"An unexpected error occurred. {str(e)}"}), 500
 
 
 if __name__ == "__main__":

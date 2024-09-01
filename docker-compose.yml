@@ -1,4 +1,5 @@
-version: '3'
+version: '3.8'
+
 services:
   gear:
     build: ./business_logic/Gear
@@ -7,6 +8,10 @@ services:
     depends_on:
       - adapter_layer
       - data_layer
+    networks:
+      gearup_app-network:
+        aliases:
+          - gear
 
   huts:
     build: ./business_logic/Huts
@@ -14,6 +19,10 @@ services:
       - "5003:5003"
     depends_on:
       - adapter_layer
+    networks:
+      gearup_app-network:
+        aliases:
+          - huts
 
   trails:
     build: ./business_logic/Trails
@@ -21,6 +30,10 @@ services:
       - "5002:5002"
     depends_on:
       - adapter_layer
+    networks:
+      gearup_app-network:
+        aliases:
+          - trails
 
   weather:
     build: ./business_logic/Weather
@@ -28,17 +41,29 @@ services:
       - "5001:5001"
     depends_on:
       - adapter_layer
+    networks:
+      gearup_app-network:
+        aliases:
+          - weather
 
   adapter_layer:
     build: ./adapter_layer
     ports:
       - "5050:5050"
+    networks:
+      gearup_app-network:
+        aliases:
+          - adapter_layer
 
   data_layer:
     build: ./data_layer
     ports:
       - "5051:5051"
-  
+    networks:
+      gearup_app-network:
+        aliases:
+          - data_layer
+
   process_centric:
     build: ./process_centric
     ports:
@@ -50,3 +75,21 @@ services:
       - trails
       - weather
       - data_layer
+      - redis  
+    networks:
+      gearup_app-network:
+        aliases:
+          - process_centric
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"  
+    networks:
+      gearup_app-network:
+        aliases:
+          - redis
+
+networks:
+  gearup_app-network:
+    driver: bridge

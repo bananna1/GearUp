@@ -14,4 +14,4 @@ def get_favourite_gear_endpoint(email):
     if not user:
         return jsonify({'error': 'User not found in the database'}), 404
     
-    return jsonify(user), 200
+    return user.to_json(), 200

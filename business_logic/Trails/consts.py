@@ -1,4 +1,4 @@
-ADAPTER_LAYER_URL = "http://127.0.0.1:5050"
+ADAPTER_LAYER_URL = "http://adapter_layer:5050"
 
 COORDS_URL = ADAPTER_LAYER_URL + '/coordinates'
 ROUTE_URL = ADAPTER_LAYER_URL + '/trails'

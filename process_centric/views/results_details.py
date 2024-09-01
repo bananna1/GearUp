@@ -6,7 +6,7 @@ import requests
 
 import logging
 from datetime import datetime
-from process_centric.app.consts import GMAPS_API_KEY, TRAILS_URL, GEAR_URL, GET_FAVOURITE_GEAR_URL
+from process_centric.consts import GMAPS_API_KEY, TRAILS_URL, GEAR_URL, GET_FAVOURITE_GEAR_URL
 
 results_details_blueprint = Blueprint('details', __name__)
 

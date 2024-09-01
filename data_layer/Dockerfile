@@ -1,14 +1,21 @@
 FROM python:latest
 
-ADD ./requirements.txt /app/requirements.txt
+WORKDIR /data_layer/
 
-WORKDIR /app/
+COPY ./requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-EXPOSE 5051
+COPY ./app.py app.py
+COPY ./app/ ./app/
+COPY ./config.py config.py
+COPY ./__init__.py __init__.py
+COPY ./migrations/ ./migrations/
+COPY ./populate_gear_table/ ./populate_gear_table/
 
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_APP=app:app
+ENV PYTHONPATH=/data_layer
+
+EXPOSE 5051
 
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5051"]
