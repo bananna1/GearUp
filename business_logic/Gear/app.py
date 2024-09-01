@@ -321,7 +321,7 @@ def calculate_gear_parameters(length, max_elevation, min_elevation, temp, weathe
 
     if level_tot <= 2:
         level = "beginner"
-    elif level_tot <= 4:
+    elif level_tot <= 3:
         level = "intermediate"
     else:
         level = "advanced"

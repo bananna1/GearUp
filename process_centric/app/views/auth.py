@@ -7,7 +7,7 @@ import os
 import sys
 import pathlib
 import logging
-from process_centric.consts import *
+from process_centric.app.consts import *
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 

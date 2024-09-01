@@ -9,13 +9,14 @@ get_hut_image_blueprint = Blueprint('get_hut_image', __name__)
 @get_hut_image_blueprint.route("/", methods=["POST"])
 def get_hut_image():
     
-    url = f"https://maps.googleapis.com/maps/api/place/photo?maxwidth={width}&maxheight={height}&photoreference={photo_reference}&key={GMAPS_API_KEY}"
 
     try:
         photo_data = request.json
         photo_reference = photo_data.get('photo reference')
         width = photo_data.get('width')
         height = photo_data.get('height')
+
+        url = f"https://maps.googleapis.com/maps/api/place/photo?maxwidth={width}&maxheight={height}&photoreference={photo_reference}&key={GMAPS_API_KEY}"
         response = requests.get(url)
 
         if response.status_code == 200:

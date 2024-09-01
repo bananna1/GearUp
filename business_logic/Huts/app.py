@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import requests
 import logging
-from consts import COORDS_URL, HUTS_URL, HUT_IMAGE_URL
+from consts import COORDS_URL, HUTS_URL
 
 app = Flask(__name__)
 

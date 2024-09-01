@@ -2,11 +2,11 @@ from flask import Blueprint, request, redirect, url_for, session, render_templat
 import requests
 import json
 import logging
-from process_centric.consts import HUTS_URL
-from process_centric.consts import WEATHER_URL
+from process_centric.app.consts import HUTS_URL
+from process_centric.app.consts import WEATHER_URL
 import datetime
 import urllib.parse
-from process_centric.consts import GMAPS_API_KEY
+from process_centric.app.consts import GMAPS_API_KEY
 
 search_blueprint = Blueprint('search', __name__)
 
@@ -53,13 +53,23 @@ def search():
             'location': location,
             'radius': radius
         })
+        if huts_results.status_code == 500:
+            message = huts_results.json().get('error')
+            return redirect(url_for('error.error', error_message=message, previous_url=request.referrer))
+
+            
         huts_results = huts_results.json()
         #print(huts_results)
         weather_results = requests.post(WEATHER_URL, json = {
             'date': date,
             'location': location
         })
+        if weather_results.status_code == 500:
+            message = weather_results.json().get('error')
+            return redirect(url_for('error.error', error_message=message, previous_url=request.referrer))
+
         weather_results = weather_results.json()
+        
 
         results = {
             'huts_results': huts_results,

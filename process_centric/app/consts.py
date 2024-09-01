@@ -18,7 +18,5 @@ ADD_USER_URL = DATA_LAYER_URL + "/add_user/"
 GET_USER_URL = DATA_LAYER_URL + "/get_user"
 GET_GEAR_URL = DATA_LAYER_URL + "/get_gear/id/"
 GET_FAVOURITE_GEAR_URL = DATA_LAYER_URL + '/get_favourite_gear/'
-GET_FAVOURITE_TRAILS_URL = DATA_LAYER_URL + '/get_favourite_trails/'
 ADD_FAVOURITE_GEAR_URL = DATA_LAYER_URL + '/add_favourite_gear/'
-ADD_FAVOURITE_TRAIL_URL = DATA_LAYER_URL + '/add_favourite_trail/'
 REMOVE_FAVOURITE_GEAR_URL = DATA_LAYER_URL + '/remove_favourite_gear'

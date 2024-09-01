@@ -48,19 +48,38 @@
             align-items: center;
             width: 24px;
             height: 24px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
             cursor: pointer;
         }
         .home-icon {
             background-image: url('/static/images/home.png'); 
-        }
-        .favourites-icon {
-            background-image: url('/static/images/favourites.png'); 
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
         .logout-icon {
             background-image: url('/static/images/logout.png'); 
+            width: 24px;
+            height: 24px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .delete-button {
+            background-color: #ff4d4d;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            position: absolute;
+            top: 20px;
+            right: 50px;
+        }
+        .delete-button:hover {
+            background-color: #ff1a1a;
         }
     </style>
 </head>
@@ -68,7 +87,6 @@
 
     <div class="icon-container">
         <a href="{{ url_for('home.home') }}" class="home-icon" title="Home"></a>
-        <a href="{{ url_for('favourites.favourites') }}" class="favourites-icon" title="Favourites"></a>
         <a href="{{ url_for('auth.logout') }}" class="logout-icon" title="Logout"></a>
     </div>
 
@@ -87,6 +105,14 @@
                     <p>{% if item.warmth != "N" %}Warmth: {{ item.warmth | capitalize }}{% endif %}</p>
                     <p>{% if item.waterproof >= 5000 %}Waterproof: {{ item.waterproof }}mm{% endif %}</p>
                     <p><a href="{{ item.link }}" target="_blank">View Product</a></p>
+
+                    
+                    <form action="{{ url_for('manage_favourite.manage_favourite') }}" method="POST" style="display:inline;">
+                        <input type="hidden" name="item_id" value="{{ item.code }}">
+                        <input type="hidden" name="action" value="remove">
+                        <button type="submit" class="delete-button" title="Delete Favourite">Remove</button>
+                    </form>
+
                 </div>
                 {% endfor %}
         </div>
@@ -94,7 +120,6 @@
         <p>You don't have any favourite gear yet</p>
         {% endif %}
     </div>
-
 
 </body>
 </html>

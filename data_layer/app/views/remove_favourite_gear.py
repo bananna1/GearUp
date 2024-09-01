@@ -9,11 +9,12 @@ remove_favourite_gear_blueprint = Blueprint('remove_favourite_gear', __name__)
 
 @remove_favourite_gear_blueprint.route('/', methods=['POST'])
 def remove_favourite_gear_endpoint():
+
     data = request.get_json()
     email = data['email']
     gear_id = data['gearid']
     
-    favourite_gear = FavouriteGear.query.filter_by(email=email, gear_id=gear_id).first()
+    favourite_gear = FavouriteGear.query.filter_by(email=email, gearid=gear_id).first()
 
     if favourite_gear:
         

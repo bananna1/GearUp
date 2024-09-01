@@ -1,6 +1,6 @@
 from flask import redirect, url_for, session, Blueprint, render_template
 import requests
-from process_centric.consts import GET_FAVOURITE_GEAR_URL, GET_GEAR_URL
+from process_centric.app.consts import GET_FAVOURITE_GEAR_URL, GET_GEAR_URL
 import logging
 
 favourites_blueprint = Blueprint('favourites', __name__)

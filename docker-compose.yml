@@ -1,0 +1,52 @@
+version: '3'
+services:
+  gear:
+    build: ./business_logic/Gear
+    ports:
+      - "5004:5004"
+    depends_on:
+      - adapter_layer
+      - data_layer
+
+  huts:
+    build: ./business_logic/Huts
+    ports:
+      - "5003:5003"
+    depends_on:
+      - adapter_layer
+
+  trails:
+    build: ./business_logic/Trails
+    ports:
+      - "5002:5002"
+    depends_on:
+      - adapter_layer
+
+  weather:
+    build: ./business_logic/Weather
+    ports:
+      - "5001:5001"
+    depends_on:
+      - adapter_layer
+
+  adapter_layer:
+    build: ./adapter_layer
+    ports:
+      - "5050:5050"
+
+  data_layer:
+    build: ./data_layer
+    ports:
+      - "5051:5051"
+  
+  process_centric:
+    build: ./process_centric
+    ports:
+      - "5000:5000"
+    depends_on:
+      - adapter_layer
+      - gear
+      - huts
+      - trails
+      - weather
+      - data_layer
