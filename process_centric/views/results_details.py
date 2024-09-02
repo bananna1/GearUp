@@ -69,6 +69,9 @@ def results_details():
         route = trail.get('route')
     
         elevations = trail.get('elevations', [])
+
+        link = trail.get('link')
+
         distance_km = [i * 0.1 for i in range(len(elevations))]  # x axis in kilometers
 
         fig, ax = plt.subplots(figsize=(10, 6))
@@ -126,6 +129,7 @@ def results_details():
         'results_details.html',
         hut_data=hut_data,
         trail=trail,
+        link=link,
         weather=weather,
         gear=gear,
         date=formatted_date,
