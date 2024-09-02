@@ -8,7 +8,7 @@ from consts import DATA_URL
 app = Flask(__name__)
 
 
-
+logging.basicConfig(level=logging.DEBUG)
 
 @app.route("/gear", methods = ["POST"])
 def suggest_gear():
@@ -25,7 +25,7 @@ def suggest_gear():
     
     [warmth, waterproof, level] = calculate_gear_parameters(length, max_elevation, min_elevation, temp, weather, prec)
 
-    print(warmth, waterproof, level)
+    logging.debug(f'{warmth}, {waterproof}, {level}')
 
 
     fleece = None
@@ -80,12 +80,12 @@ def suggest_gear():
 
 
     # JACKET
-    if warmth == 'low' and waterproof != 0:
-        print('Jacket 1')
+    if (warmth == 'low' or warmth == 'medium') and waterproof != 0:
+        logging.debug('Jacket 1')
         if waterproof <= 5000:
             jacket = requests.post(DATA_URL, json={ 
                 "category": "jacket", 
-                "warmth": warmth,
+                "warmth": 'low',
                 "level": level,
                 "waterproof": waterproof,
                 "gender": gender,
@@ -93,7 +93,7 @@ def suggest_gear():
         else:
             jacket = requests.post(DATA_URL, json={ 
                     "category": "jacket", 
-                    "warmth": warmth,
+                    "warmth": 'low',
                     "level": 'any',
                     "waterproof": waterproof,
                     "gender": gender,
